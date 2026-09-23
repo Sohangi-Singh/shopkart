@@ -16,6 +16,13 @@ npm run dev
 ```
 Backend runs on http://localhost:5000
 
+## Add sample products (for demo)
+```
+cd backend
+npm run seed
+```
+This adds 8 products (Electronics, Fashion, Books, Home).
+
 ## Frontend setup
 ```
 cd frontend
