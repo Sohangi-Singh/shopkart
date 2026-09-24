@@ -14,7 +14,7 @@ cp .env.example .env
 # edit MONGO_URI if using Atlas, else local mongodb://127.0.0.1:27017/shopkart works
 npm run dev
 ```
-Backend runs on http://localhost:5000
+Backend runs on http://localhost:5001 (port 5000 is used by macOS AirPlay, so we use 5001)
 
 ## Add sample products (for demo)
 ```
