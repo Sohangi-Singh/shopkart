@@ -64,7 +64,7 @@ function Cart() {
             {items.map(({ product, quantity, subtotal }) => (
               product && (
                 <div key={product._id} className="cart-row">
-                  <SafeImage src={product.image} alt={product.name} style={{ width: 84, height: 84, objectFit: "cover", borderRadius: 10 }} />
+                  <SafeImage src={product.image} alt={product.name} />
                   <div>
                     <h4>{product.name}</h4>
                     <div style={{ color: "#64748b", fontSize: 13 }}>{product.category} • Rs. {product.price?.toLocaleString("en-IN")} each</div>

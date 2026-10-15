@@ -8,14 +8,14 @@ Professional e-commerce demo: auth, catalog, wishlist, cart, Razorpay Test Mode 
 
 ## Backend setup
 ```
-cd backend
-npm install
-cp .env.example .env
+cp backend/.env.example backend/.env
 # edit MONGO_URI if using Atlas, else local mongodb://127.0.0.1:27017/shopkart works
 # add Razorpay Test Mode keys to RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET
+npm install --prefix backend
+npm install --prefix frontend
 npm run dev
 ```
-Backend runs on http://localhost:5001 (port 5000 is used by macOS AirPlay, so we use 5001)
+Run `npm run dev` from the project root to start both services together. The backend runs on http://localhost:5001 and the frontend on http://localhost:5173. Press Ctrl+C to stop both.
 
 ## Add sample products (for demo)
 ```
@@ -24,13 +24,7 @@ npm run seed
 ```
 This adds 8 products (Electronics, Fashion, Books, Home).
 
-## Frontend setup
-```
-cd frontend
-npm install
-npm run dev
-```
-Frontend runs on http://localhost:5173
+For individual services, use `npm run dev:backend` or `npm run dev:frontend` from the project root.
 
 Flow: `/register` → `/login` → `/home` → `/products` → `/cart` → `/checkout` → Razorpay Test Checkout → `/orders`
 
