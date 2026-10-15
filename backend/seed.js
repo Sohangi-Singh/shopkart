@@ -11,7 +11,7 @@ const products = [
     description: "Over-ear wireless headphones with noise cancellation.",
     price: 4999,
     category: "Electronics",
-    image: "https://via.placeholder.com/300?text=Headphones",
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop",
     stock: 12,
   },
   {
@@ -19,7 +19,7 @@ const products = [
     description: "RGB mechanical keyboard with blue switches.",
     price: 2999,
     category: "Electronics",
-    image: "https://via.placeholder.com/300?text=Keyboard",
+    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80&auto=format&fit=crop",
     stock: 10,
   },
   {
@@ -27,7 +27,7 @@ const products = [
     description: "Comfortable plain cotton t-shirt.",
     price: 499,
     category: "Fashion",
-    image: "https://via.placeholder.com/300?text=TShirt",
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80&auto=format&fit=crop",
     stock: 50,
   },
   {
@@ -35,7 +35,7 @@ const products = [
     description: "Classic blue denim jeans.",
     price: 1299,
     category: "Fashion",
-    image: "https://via.placeholder.com/300?text=Jeans",
+    image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80&auto=format&fit=crop",
     stock: 30,
   },
   {
@@ -43,7 +43,7 @@ const products = [
     description: "Bestselling self-help book by James Clear.",
     price: 599,
     category: "Books",
-    image: "https://via.placeholder.com/300?text=Book",
+    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&q=80&auto=format&fit=crop",
     stock: 100,
   },
   {
@@ -51,7 +51,7 @@ const products = [
     description: "Autobiography of A.P.J. Abdul Kalam.",
     price: 350,
     category: "Books",
-    image: "https://via.placeholder.com/300?text=Wings+of+Fire",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80&auto=format&fit=crop",
     stock: 80,
   },
   {
@@ -59,7 +59,7 @@ const products = [
     description: "350ml ceramic mug for home and office.",
     price: 299,
     category: "Home",
-    image: "https://via.placeholder.com/300?text=Mug",
+    image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=600&q=80&auto=format&fit=crop",
     stock: 60,
   },
   {
@@ -67,7 +67,7 @@ const products = [
     description: "Simple LED table lamp for study desk.",
     price: 899,
     category: "Home",
-    image: "https://via.placeholder.com/300?text=Lamp",
+    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80&auto=format&fit=crop",
     stock: 20,
   },
 ];

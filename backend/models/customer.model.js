@@ -27,6 +27,22 @@ const customerSchema = new mongoose.Schema(
         ref: "Product",
       },
     ],
+    // Lab 05: cart stores product + quantity (reference, not full product)
+    cart: [
+      {
+        product: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product",
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+          default: 1,
+          min: 1,
+        },
+      },
+    ],
   },
   { timestamps: true } // creates createdAt automatically
 );

@@ -1,43 +1,72 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
+import SafeImage from "./SafeImage";
+import { useCart } from "../context/CartContext";
 
 // Small card used in Products page
 function ProductCard({ product }) {
-  const [status, setStatus] = useState("idle"); // idle | saving | added | error
+  const [wish, setWish] = useState("idle"); // idle | saving | added | error
+  const [cartMsg, setCartMsg] = useState(""); // feedback for cart
+  const [adding, setAdding] = useState(false);
+  const { addToCart: addToGlobalCart } = useCart();
 
   async function addToWishlist() {
     try {
-      setStatus("saving");
+      setWish("saving");
       await api.post(`/wishlist/${product._id}`);
-      setStatus("added");
+      setWish("added");
     } catch (err) {
-      // Duplicate (409) also shows as added
       if (err.response && err.response.status === 409) {
-        setStatus("added");
+        setWish("added");
       } else {
-        setStatus("error");
+        setWish("error");
       }
+    }
+  }
+
+  async function addToCart() {
+    try {
+      setAdding(true);
+      setCartMsg("Adding...");
+      await addToGlobalCart(product._id, 1); // shared state -> Navbar updates instantly
+      setCartMsg("Added to cart ✓");
+      setTimeout(() => setCartMsg(""), 2000);
+    } catch (err) {
+      setCartMsg(err.response?.data?.message || "Could not add to cart");
+    } finally {
+      setAdding(false);
     }
   }
 
   return (
     <div className="card">
-      <img src={product.image} alt={product.name} />
-      <h4>{product.name}</h4>
-      <p>{product.category}</p>
-      <p>Rs. {product.price}</p>
-      <p>{product.stock} units left</p>
-      <Link to={`/products/${product._id}`}>View Details</Link>
-      <br />
-      <br />
-      <button onClick={addToWishlist} disabled={status === "saving" || status === "added"}>
-        {status === "idle" && "♡ Add to Wishlist"}
-        {status === "saving" && "Saving..."}
-        {status === "added" && "♥ Added to Wishlist"}
-        {status === "error" && "Retry Wishlist"}
-      </button>
-      {status === "error" && <p className="error">Unable to save. Try again.</p>}
+      <SafeImage src={product.image} alt={product.name} />
+      <div className="card-body">
+        <span className="badge">{product.category}</span>
+        <h4>{product.name}</h4>
+        <div className="price">Rs. {product.price?.toLocaleString("en-IN")}</div>
+        <div className={`stock ${product.stock <= 5 ? "low" : ""}`}>
+          {product.stock > 0 ? `${product.stock} in stock` : "Out of stock"}
+        </div>
+        <Link className="link" to={`/products/${product._id}`}>View Details →</Link>
+        <div className="card-actions">
+          <button className="icon-btn" onClick={addToCart} disabled={product.stock < 1 || adding}>
+            {adding ? "Adding..." : "🛒 Add to Cart"}
+          </button>
+          <button
+            className="icon-btn btn-ghost"
+            onClick={addToWishlist}
+            disabled={wish === "saving" || wish === "added"}
+          >
+            {wish === "idle" && "♡"}
+            {wish === "saving" && "..."}
+            {wish === "added" && "♥ Saved"}
+            {wish === "error" && "Retry"}
+          </button>
+        </div>
+        {cartMsg && <div style={{ fontSize: 13, color: "#4f46e5" }}>{cartMsg}</div>}
+      </div>
     </div>
   );
 }
